@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ADD</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">Project Management Systen</div>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Project</a></li>
+      <li><a href="profile">Profile</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href ="signout">Sign out</a></li>
+  </div>
+</nav>
+
+<div class="container" style="background-color: white">
+    <h2>Add Project</h2>
+    <form class="form-horizontal" method="POST">
+      <div class="form-group">
+        <label for="inputProfile" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputProfile" name="name" placeholder="Name"  value="">
+        </div>
+</div>
+<div class="form-group">
+  <label for="inputProfile" class="col-sm-2 control-label">Members</label>
+  <div class="col-sm-2">
+      <% for(var i=0; i < data.length; i++) { %>
+      <input type="checkbox" name="members" value="<%= data[i].userid %>" > <%= data[i].firstname %> <br>
+    <% } %>
+  </div>
+</div>
+<div class="form-group form-group-sm">
+  <label class="col-sm-2 control-label" for="formGroupInputSmall"></label>
+  <div class="col-sm-10">
+  <button  style="margin-top : 30px" type="submit" name="button" class="btn btn-primary"> Save </button>
+  </div>
+</div>
