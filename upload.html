@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cara Membuat upload preview dengan javascript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+            function tampilkanPreview(gambar,idpreview){
+                var gb = gambar.files;
+                for (var i = 0; i < gb.length; i++){
+                    var gbPreview = gb[i];
+                    var imageType = /image.*/;
+                    var preview=document.getElementById(idpreview);
+                    var reader = new FileReader();
+
+                    if (gbPreview.type.match(imageType)) {
+                        preview.file = gbPreview;
+                        reader.onload = (function(element) {
+                            return function(e) {
+                                element.src = e.target.result;
+                            };
+                        })(preview);
+                        reader.readAsDataURL(gbPreview);
+                    }else{
+                        alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
+                    }
+
+                }
+            }
+        </script>
+        <style type="text/css">
+            form{width: 310px; margin: auto;}
+            .input{background: #F0FFF3; color: black; cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <form id="myForm" action="" method="get">
+            <input type="file" class="input" accept="image/*"  onchange="tampilkanPreview(this,'preview')" />
+            <input type="submit" value="Upload" /><br/>
+            <!--untuk menampilkan file gambar yang telah di upload-->
+            <img id="preview" src="" alt="" width="200px"/>
+        </form>
+    </body>
+</html>
